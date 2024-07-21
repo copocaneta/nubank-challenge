@@ -23,7 +23,7 @@ export class Operations {
 
     buy(unitCost, quantity) {
         this.updateWeightedAverageCost(unitCost, quantity);
-        this.totalQuantity += quantity;
+        this.totalQuantity = this.totalQuantity + quantity;
     }
 
     sell(unitCost, quantity) {
@@ -37,7 +37,7 @@ export class Operations {
             if (sellValue > 20000) {
                 if (this.totalLosses > 0) {
                     if (profit <= this.totalLosses) {
-                        this.totalLosses -= profit;
+                        this.totalLosses = this.totalLosses - profit;
                     } else {
                         const taxableProfit = profit - this.totalLosses;
                         this.totalLosses = 0;
@@ -48,7 +48,7 @@ export class Operations {
                 }
             }
         } else {
-            this.totalLosses += Math.abs(profit);
+            this.totalLosses = this.totalLosses + Math.abs(profit);
         }
 
         this.updateStock(quantity);
@@ -66,14 +66,14 @@ export class Operations {
         while (quantity > 0 && this.stock.length > 0) {
             const currentStock = this.stock[0];
             if (currentStock.quantity <= quantity) {
-                quantity -= currentStock.quantity;
+                quantity = quantity - currentStock.quantity;
                 this.stock.shift();
             } else {
-                currentStock.quantity -= quantity;
+                currentStock.quantity = currentStock.quantity - quantity;
                 quantity = 0;
             }
         }
-        this.totalQuantity -= quantity;
+        this.totalQuantity = this.totalQuantity - quantity;
     }
 
     getTaxes() {

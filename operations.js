@@ -1,15 +1,42 @@
 export class Operations {
     constructor() {
+        /**
+         * @type {Array<Object>}
+         * @description Stores the stock transactions
+         */
         this.stock = [];
+
+        /**
+         * @type {number}
+         * @description Total quantity of stocks
+         */
         this.totalQuantity = 0;
+
+        /**
+         * @type {number}
+         * @description Weighted average cost of stocks
+         */
         this.weightedAverageCost = 0;
+
+        /**
+         * @type {number}
+         * @description Total losses from sell operations
+         */
         this.totalLosses = 0;
+
+        /**
+         * @type {Array<Object>}
+         * @description Stores the tax result for each operacion
+         */
         this.taxes = [];
     }
 
     /**
-     *
-     * @param {*} operation
+     * adds a new operation (buy or sell) and calculates the taxes
+     * @param {Object} operation - operation to be added
+     * @param {string} operation.operation - type of operation ("buy" or "sell")
+     * @param {number} operation.unitCost - unit cost of the stock
+     * @param {number} operation.quantity - quantity of stocks
      */
     addOperation(operation) {
         if (operation.operation === "buy") {
@@ -21,11 +48,22 @@ export class Operations {
         }
     }
 
+    /**
+     * processes a buy operation, updating the weighted average cost and total quantity of stocks
+     * @param {number} unitCost - unit cost of the stock.
+     * @param {number} quantity - quantity of stocks.
+     */
     buy(unitCost, quantity) {
         this.updateWeightedAverageCost(unitCost, quantity);
         this.totalQuantity = this.totalQuantity + quantity;
     }
 
+    /**
+     * processed a sell operation, calculating the tax based on profit and updating total losses (if needed)
+     * @param {number} unitCost - unit cost of the stock
+     * @param {number} quantity - quantity of stocks
+     * @returns {number} - calculated tax for the sell operation
+     */
     sell(unitCost, quantity) {
         const sellValue = unitCost * quantity;
         const averageCost = this.weightedAverageCost;
@@ -55,6 +93,11 @@ export class Operations {
         return tax;
     }
 
+    /**
+     * updates the weighted average cost of stocks based on the new operations
+     * @param {number} unitCost - unit cost of the stock
+     * @param {number} quantity - quantity of stocks
+     */
     updateWeightedAverageCost(unitCost, quantity) {
         const currentTotalCost = this.weightedAverageCost * this.totalQuantity;
         const newTotalCost = currentTotalCost + unitCost * quantity;
@@ -62,6 +105,10 @@ export class Operations {
             newTotalCost / (this.totalQuantity + quantity);
     }
 
+    /**
+     * updates the stock by reducing the sold quantity from the current stock
+     * @param {number} quantity - quantity of stocks to be to be reduced
+     */
     updateStock(quantity) {
         while (quantity > 0 && this.stock.length > 0) {
             const currentStock = this.stock[0];
@@ -76,6 +123,10 @@ export class Operations {
         this.totalQuantity = this.totalQuantity - quantity;
     }
 
+    /**
+     * returns the calculated taxes for all operations
+     * @returns {Array<Object>} list of tax results for each operations
+     */
     getTaxes() {
         return this.taxes;
     }

@@ -69,28 +69,38 @@ This project calculates the taxes for buy and sell operations of stocks based on
     yarn test:debug
     ```
 
+### Generating Documentation
+
+-   To generate the documentation from the JSDoc comments, use the following command:
+
+    ```sh
+    yarn generate-docs
+    ```
+
+-   The generated documentation will be available in the docs directory. Open `index.html` in a web browser to view the documentation.
+
 ### Usage
 
 1. **Prepare your input file:**
 
-    Create an input file (`input.txt`, or any other name you prefer) with the operations data in JSON format:
+Create an input file (`input.txt`, or any other name you prefer) with the operations data in JSON format:
 
-    ```json
-    [{"operation":"buy", "unit-cost":10.00, "quantity": 100},
-     {"operation":"sell", "unit-cost":15.00, "quantity": 50},
-     {"operation":"sell", "unit-cost":15.00, "quantity": 50}]
-    [{"operation":"buy", "unit-cost":10.00, "quantity": 10000},
-     {"operation":"sell", "unit-cost":20.00, "quantity": 5000},
-     {"operation":"sell", "unit-cost":5.00, "quantity": 5000}]
-    ```
+```json
+[{"operation":"buy", "unit-cost":10.00, "quantity": 100},
+ {"operation":"sell", "unit-cost":15.00, "quantity": 50},
+ {"operation":"sell", "unit-cost":15.00, "quantity": 50}]
+[{"operation":"buy", "unit-cost":10.00, "quantity": 10000},
+ {"operation":"sell", "unit-cost":20.00, "quantity": 5000},
+ {"operation":"sell", "unit-cost":5.00, "quantity": 5000}]
+```
 
 2. **Run the script:**
 
-    Execute the script with the input file:
+Execute the script with the input file:
 
-    ```sh
-    node main.js < input.txt
-    ```
+```sh
+node main.js < input.txt
+```
 
 ### Project Structure
 
@@ -103,11 +113,11 @@ This project calculates the taxes for buy and sell operations of stocks based on
 
 ```json
 [{"operation":"buy", "unit-cost":10.00, "quantity": 100},
- {"operation":"sell", "unit-cost":15.00, "quantity": 50},
- {"operation":"sell", "unit-cost":15.00, "quantity": 50}]
+{"operation":"sell", "unit-cost":15.00, "quantity": 50},
+{"operation":"sell", "unit-cost":15.00, "quantity": 50}]
 [{"operation":"buy", "unit-cost":10.00, "quantity": 10000},
- {"operation":"sell", "unit-cost":20.00, "quantity": 5000},
- {"operation":"sell", "unit-cost":5.00, "quantity": 5000}]
+{"operation":"sell", "unit-cost":20.00, "quantity": 5000},
+{"operation":"sell", "unit-cost":5.00, "quantity": 5000}]
 ```
 
 **Command:**
@@ -129,5 +139,6 @@ node main.js < input.txt
 1. Weighted Average Cost: calculate after each buy operation
 1. Loss Deduction: Previous losses are applied for future gains
 1. No Tax Conditions:
-    - No tax is paid on buy operations
-    - No tax is paid if if the total value of the sell operation is less then or equal to 20000
+
+-   No tax is paid on buy operations
+-   No tax is paid if if the total value of the sell operation is less then or equal to 20000

@@ -69,7 +69,7 @@ This project calculates the taxes for buy and sell operations of stocks based on
     yarn test:debug
     ```
 
--   `npm` could also be used, in this case the commands would be `npm run test` or `npm run test:dev` or `npm run test:debug`
+-   `npm` could also be used, in this case the commands would be `npm run test`, `npm run test:dev`, `npm run test:debug`
 
 ### Generating Documentation
 

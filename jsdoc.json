@@ -1,0 +1,9 @@
+{
+    "source": {
+        "include": ["operations.js"],
+        "exclude": ["node_modules"]
+    },
+    "opts": {
+        "destination": "./docs"
+    }
+}

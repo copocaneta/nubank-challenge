@@ -7,13 +7,17 @@ export class Operations {
         this.taxes = [];
     }
 
+    /**
+     *
+     * @param {*} operation
+     */
     addOperation(operation) {
         if (operation.operation === "buy") {
             this.buy(operation.unitCost, operation.quantity);
-            this.taxes.push({ tax: "0.00" });
+            this.taxes.push({ tax: parseFloat((0).toFixed(2)) });
         } else if (operation.operation === "sell") {
             const tax = this.sell(operation.unitCost, operation.quantity);
-            this.taxes.push({ tax: tax.toFixed(2) });
+            this.taxes.push({ tax: parseFloat(tax.toFixed(2)) });
         }
     }
 

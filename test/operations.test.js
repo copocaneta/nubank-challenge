@@ -1,4 +1,4 @@
-import { Operations } from "../operations";
+import { Operations } from "../src/operations";
 
 describe("Operations Class", () => {
     let operationService;

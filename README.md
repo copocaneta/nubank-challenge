@@ -101,7 +101,7 @@ Create an input file (`input.txt`, or any other name you prefer) with the operat
 Execute the script with the input file:
 
 ```sh
-node main.js < input.txt
+node ./src/main.js < input.txt
 ```
 
 ### Project Structure
@@ -125,7 +125,7 @@ node main.js < input.txt
 **Command:**
 
 ```sh
-node main.js < input.txt
+node ./src/main.js < input.txt
 ```
 
 **Output**

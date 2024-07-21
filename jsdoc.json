@@ -1,6 +1,6 @@
 {
     "source": {
-        "include": ["operations.js"],
+        "include": ["src/operations.js"],
         "exclude": ["node_modules"]
     },
     "opts": {

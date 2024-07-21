@@ -1,7 +1,5 @@
 import { writeFileSync, unlinkSync, write } from "fs";
 import { exec } from "child_process";
-import { stderr, stdout } from "process";
-import { error } from "console";
 
 describe("Integration Tests", () => {
     test("Case #1", (done) => {

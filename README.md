@@ -1,4 +1,4 @@
-## Stock Operations Tax Calculator
+## Code Challenge: Ganho de Capital
 
 ### Overview
 
@@ -26,7 +26,7 @@ This project calculates the taxes for buy and sell operations of stocks based on
 1. **Unzip the file:**
 
     ```sh
-    unzip thiago-bernardi_nubank-coding-challenge.zip
+    unzip nubank-coding-challenge.zip
     ```
 
 2. **Install dependencies:**
